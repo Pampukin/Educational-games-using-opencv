@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.IO;
 
-public class ShootButton : MonoBehaviour
+public class shootButton : MonoBehaviour
 {
     public RawImage RawImage;
     public GameObject Text;
@@ -20,7 +19,6 @@ public class ShootButton : MonoBehaviour
         //RawImageのテクスチャにWebCamTextureのインスタンスを設定
         RawImage.texture = webCam;
 
-        
         //90度回転
         Vector3 angles = RawImage.GetComponent<RectTransform>().eulerAngles;
         angles.z = -90;
@@ -30,7 +28,7 @@ public class ShootButton : MonoBehaviour
         size.x = RawImage.GetComponent<RectTransform>().sizeDelta.y;
         size.y = RawImage.GetComponent<RectTransform>().sizeDelta.x;
         RawImage.GetComponent<RectTransform>().sizeDelta = size;
-        
+
 
         //縦横のサイズを要求
         webCam.requestedWidth = 3024;
@@ -45,16 +43,11 @@ public class ShootButton : MonoBehaviour
     {
     }
 
-    public void Pause()
+    public void OnClick()
     {
-        // カメラを停止
-        webCam.Pause();
-    }
 
-    public void Save()
-    {
         // インスタンス取得
-        //webCam = ShootButton.GetComponent<ShootButton>().webCam;
+        //webCam = shootButton.GetComponent<shootButton>().webCam;
         // Texture2Dを新規作成
         Texture2D texture = new Texture2D(webCam.width, webCam.height, TextureFormat.ARGB32, false);
         // カメラのピクセルデータを設定
@@ -73,5 +66,57 @@ public class ShootButton : MonoBehaviour
 #else
         File.WriteAllBytes(Application.dataPath + "/test.jpg", bin);
 #endif
+
+        webCam.Stop();
+    }
+
+    private Color[] _rotateImg(Color[] coler, int width, int height, int rotate)
+    {
+        Color[] rotatepix = new Color[width * height];
+        int startposi = width * height - width;
+        int posi = 0;
+
+        if (rotate == 0)
+        {
+            for (int i = 0; i < rotatepix.Length; i++)
+            {
+                rotatepix[i] = coler[i];
+            }
+        }
+        else if (rotate == 90)
+        {
+            startposi = width - 1;
+            for (int j = 0; j < width; j++)
+            {
+                for (int i = startposi; i < rotatepix.Length; i += width)
+                {
+                    rotatepix[posi] = coler[i];
+                    posi++;
+                }
+                startposi--;
+            }
+        }
+        else if (rotate == 180)
+        {
+            for (int i = (rotatepix.Length - 1); i >= 0; i--)
+            {
+                rotatepix[rotatepix.Length - 1 - i] = coler[i];
+            }
+        }
+        else if (rotate == 270)
+        {
+            startposi = width * height - width;
+            for (int j = 0; j < width; j++)
+            {
+                for (int i = startposi; i >= 0; i -= width)
+                {
+                    rotatepix[posi] = coler[i];
+                    posi++;
+                }
+                startposi++;
+            }
+        }
+
+        return rotatepix;
     }
 }
