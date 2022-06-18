@@ -8,14 +8,15 @@ using OpenCvSharp.Aruco;
 
 public class test : MonoBehaviour
 {
+    WebCamTexture webCamTexture;
     RawImage RawImage;
     private Texture2D texture;
 
     // Start is called before the first frame update
     void Start()
     {
-        WebCamTexture webCamTexture = new WebCamTexture();
-        RawImage = GetComponent<RawImage>();
+        webCamTexture = new WebCamTexture();
+        //texture = webCamTexture;
         RawImage.texture = webCamTexture;
         webCamTexture.Play();
     }

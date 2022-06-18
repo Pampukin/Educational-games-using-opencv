@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/test/testScene.unity
     guid: 7cede6aee44377849b916a0e8364990d
   - enabled: 0
     path: Assets/Scenes/childScene.unity
     guid: 4304a2b0dec0bb749a4dbe966562d987
+  - enabled: 1
+    path: Assets/Parent/takePhote.unity
+    guid: 83536eb6b3bdb0e4b9e8d980f4521a43
   - enabled: 0
     path: Assets/OpenCV+Unity/Demo/Lobby/LobbyScene.unity
     guid: dbcacb8eff72f5b43af892254d87eda7
