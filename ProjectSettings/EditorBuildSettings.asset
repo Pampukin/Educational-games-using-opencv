@@ -6,39 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Parent/takePhote.unity
+    guid: 83536eb6b3bdb0e4b9e8d980f4521a43
+  - enabled: 1
+    path: Assets/FindPhotp/FindPhoto.unity
+    guid: 7782265d1b92c0c41b2b8027b6b5ab94
   - enabled: 0
     path: Assets/test/testScene.unity
     guid: 7cede6aee44377849b916a0e8364990d
   - enabled: 0
     path: Assets/Scenes/childScene.unity
     guid: 4304a2b0dec0bb749a4dbe966562d987
-  - enabled: 1
-    path: Assets/Parent/takePhote.unity
-    guid: 83536eb6b3bdb0e4b9e8d980f4521a43
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Lobby/LobbyScene.unity
-    guid: dbcacb8eff72f5b43af892254d87eda7
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Identifiy_Contours_by_Shape/ContoursByShapeScene.unity
-    guid: 5b0d16f801c31c944bfae4eb77cc390d
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Tracking/TrackingScene.unity
-    guid: 111a9059ba67efb47a099e5ffbe159c2
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/OCR.Alphabet/AlphabetOCR.unity
-    guid: d0f70e1287fbd6047ac361ee8077b3d6
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Face_Detector/FaceDetectorScene.unity
-    guid: dc53129b9536b4047802944847361339
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Face_Recognizer/FaceRecognizer.unity
-    guid: 64d6d3bcebc92f14495f16f82bc3841e
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Marker_Detector/MarkerDetectorScene.unity
-    guid: 1d83579c4bfab024a80d40e6207c2158
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/LiveSketch_WebCam/LiveSketchScene.unity
-    guid: a5a11ab1373713a42b4b17072ee63929
   m_configObjects: {}

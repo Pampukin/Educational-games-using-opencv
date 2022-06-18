@@ -1,71 +1,74 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class shootButton : MonoBehaviour
+public class StartCamera : MonoBehaviour
 {
     public RawImage RawImage;
-    public GameObject Text;
     WebCamTexture webCam;
+    DateTime dt;
 
+    string id = null;
+    string preId = null;
+    public GameObject CSVObject;
+    CSVPhoto csv;
     // Start is called before the first frame update
     void Start()
     {
+
         // WebCamTextureのインスタンスを生成
         webCam = new WebCamTexture();
-
         //RawImageのテクスチャにWebCamTextureのインスタンスを設定
         RawImage.texture = webCam;
-
-        //90度回転
-        Vector3 angles = RawImage.GetComponent<RectTransform>().eulerAngles;
-        angles.z = -90;
-        RawImage.GetComponent<RectTransform>().eulerAngles = angles;
-        Vector2 size;
-        size = RawImage.GetComponent<RectTransform>().sizeDelta;
-        size.x = RawImage.GetComponent<RectTransform>().sizeDelta.y;
-        size.y = RawImage.GetComponent<RectTransform>().sizeDelta.x;
-        RawImage.GetComponent<RectTransform>().sizeDelta = size;
-
-
-        //縦横のサイズを要求
-        webCam.requestedWidth = 3024;
-        webCam.requestedHeight = 4032;
-
         //カメラ表示開始
         webCam.Play();
-    }
+        csv = CSVObject.GetComponent<CSVPhoto>();
 
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     public void OnClick()
     {
+        dt = DateTime.Now;
+        String now = dt.ToString("yyyy_MM_dd_HH_mm_ss");
+        id = Application.persistentDataPath + "/" + now + ".jpg";
+        if(preId != id)
+        {
+            //シャッター音
+            var mediaActionSound = new AndroidJavaObject("android.media.MediaActionSound");
+            mediaActionSound.Call("play", mediaActionSound.GetStatic<int>("SHUTTER_CLICK"));
 
-        // インスタンス取得
-        //webCam = shootButton.GetComponent<shootButton>().webCam;
-        // Texture2Dを新規作成
-        Texture2D texture = new Texture2D(webCam.width, webCam.height, TextureFormat.ARGB32, false);
-        // カメラのピクセルデータを設定
-        texture.SetPixels(webCam.GetPixels());
-        // TextureをApply
-        texture.Apply();
+            // Texture2Dを新規作成
+            Texture2D texture = new Texture2D(webCam.width, webCam.height, TextureFormat.ARGB32, false);
 
-        // Encode
-        byte[] bin = texture.EncodeToJPG();
-        // Encodeが終わったら削除
-        Object.Destroy(texture);
+            // カメラのピクセルデータを設定
+            texture.SetPixels(webCam.GetPixels());
+            // TextureをApply
+            texture.Apply();
 
-        // ファイルを保存
+            // Encode
+            byte[] bin = texture.EncodeToJPG();
+            // Encodeが終わったら削除
+            Destroy(texture);
+
+
+            // ファイルを保存
 #if UNITY_ANDROID
-        File.WriteAllBytes(Application.persistentDataPath + "/test.jpg", bin);
+            File.WriteAllBytes(Application.persistentDataPath + "/" + now + ".jpg", bin);
+            // データを書き込む
+            csv.SaveData(id);
 #else
         File.WriteAllBytes(Application.dataPath + "/test.jpg", bin);
 #endif
 
-        webCam.Stop();
+            preId = id;
+        }
+
+
+
+
     }
 
     private Color[] _rotateImg(Color[] coler, int width, int height, int rotate)
@@ -117,4 +120,6 @@ public class shootButton : MonoBehaviour
 
         return rotatepix;
     }
+
+
 }
