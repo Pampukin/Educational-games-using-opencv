@@ -12,17 +12,12 @@ public class CSVSelect : MonoBehaviour
     {
 
         string s1 = null;
-        string path = Application.persistentDataPath + "/decide";
+        string path = Application.persistentDataPath + "/Decide";
         string FilePath = "/SelectData.csv";
 
-        // CSV1行目のカラムで、StreamWriter オブジェクトへ書き込む
-        if (!File.Exists(path + FilePath))
-        {
-            s1 = "path";
-        }
 #if UNITY_ANDROID
         // csvファイルを作成して、{}の中の要素分csvに追記をする(Androidの処理)
-        sw = new StreamWriter(path + FilePath, true);
+        sw = new StreamWriter(path + FilePath, true,Encoding.GetEncoding("UTF-8"));
 #endif
 
 #if UNITY_EDITOR
@@ -45,9 +40,10 @@ public class CSVSelect : MonoBehaviour
 
     public void SaveData(string txt1)
     {
-        string[] s1 = { txt1 };
-        string s2 = string.Join(",", s1);
-        sw.WriteLine(s2);
+        string s1 =  txt1 ;
+        byte[] idB = Encoding.UTF8.GetBytes(s1);
+        s1 = Encoding.UTF8.GetString(idB);
+        sw.WriteLine(s1);
         sw.Flush();
     }
 

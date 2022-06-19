@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +20,7 @@ public class Select : MonoBehaviour
     void Start()
     {
 #if UNITY_ANDROID
-        Directory.CreateDirectory(Application.persistentDataPath + "/decide");
+        Directory.CreateDirectory(Application.persistentDataPath + "/Decide");
 
 #endif
 
@@ -49,30 +50,26 @@ public class Select : MonoBehaviour
         }
     }
 
-    public void decide()
-    {
-        string fileName = input.text;
 
-#if UNITY_ANDROID
-        File.WriteAllBytes(Application.persistentDataPath + "/decide" + "/" +fileName+ ".jpg",tex.EncodeToPNG());
-#else
-        File.WriteAllBytes(Application.dataPath + "/test.jpg", bin);
-#endif
-    }
 
     public void OnClick()
     {
-        id = Application.persistentDataPath + "/decide" + "/" + input.text + ".jpg";
-        if (preId != id)
+        if(input.text != "")
         {
+            id = Application.persistentDataPath + "/Decide" + "/" + input.text + ".jpg";
+            if (preId != id)
+            {
 
 #if UNITY_ANDROID
-            File.WriteAllBytes(Application.persistentDataPath + "/decide" + "/" + input.text + ".jpg", tex.EncodeToPNG());
-            csv.SaveData(id);
+                File.WriteAllBytes(Application.persistentDataPath + "/Decide" + "/" + input.text + ".jpg", tex.EncodeToPNG());
+
+                csv.SaveData(id);
 #else
         File.WriteAllBytes(Application.dataPath + "/test.jpg", bin);
 #endif
-            preId = id;
+                preId = id;
+            }
         }
+        
     }
 }

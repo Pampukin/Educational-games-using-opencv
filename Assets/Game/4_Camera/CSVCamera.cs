@@ -15,14 +15,10 @@ public class CSVCamera : MonoBehaviour
         string path = Application.persistentDataPath + "/Camera";
         string FilePath = "/CameraData.csv";
 
-        // CSV1行目のカラムで、StreamWriter オブジェクトへ書き込む
-        if (!File.Exists(path + FilePath))
-        {
-            s1 = "path";
-        }
+
 #if UNITY_ANDROID
         // csvファイルを作成して、{}の中の要素分csvに追記をする(Androidの処理)
-        sw = new StreamWriter(path + FilePath, true);
+        sw = new StreamWriter(path + FilePath, true, Encoding.GetEncoding("UTF-8"));
 #endif
 
 #if UNITY_EDITOR

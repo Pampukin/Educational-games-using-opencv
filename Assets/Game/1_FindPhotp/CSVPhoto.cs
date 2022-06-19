@@ -13,14 +13,9 @@ public class CSVPhoto : MonoBehaviour
 
         string s1 = null;
         string FilePath = "/PhotoData.csv";
-        // CSV1行目のカラムで、StreamWriter オブジェクトへ書き込む
-        if (!File.Exists(Application.persistentDataPath + FilePath))
-        {
-            s1 = "path";
-        }
 #if UNITY_ANDROID
             // csvファイルを作成して、{}の中の要素分csvに追記をする(Androidの処理)
-            sw = new StreamWriter(Application.persistentDataPath + FilePath, true);
+            sw = new StreamWriter(Application.persistentDataPath+ "/Photo" + FilePath, true);
 #endif
 
 #if UNITY_EDITOR

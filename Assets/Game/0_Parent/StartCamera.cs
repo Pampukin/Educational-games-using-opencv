@@ -3,36 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Camera : MonoBehaviour
+public class StartCamera : MonoBehaviour
 {
     public RawImage RawImage;
     WebCamTexture webCam;
     DateTime dt;
-    private string path;
+
     string id = null;
     string preId = null;
     public GameObject CSVObject;
-    CSVCamera csv;
-    public static string testId;
+    CSVPhoto csv;
     // Start is called before the first frame update
     void Start()
     {
-#if UNITY_ANDROID
-        Directory.CreateDirectory(Application.persistentDataPath + "/Camera");
 
-#endif
-
-        path = Application.persistentDataPath + "/Camera";
         // WebCamTextureのインスタンスを生成
         webCam = new WebCamTexture();
         //RawImageのテクスチャにWebCamTextureのインスタンスを設定
         RawImage.texture = webCam;
         //カメラ表示開始
         webCam.Play();
-        csv = CSVObject.GetComponent<CSVCamera>();
+        csv = CSVObject.GetComponent<CSVPhoto>();
 
     }
 
@@ -40,8 +33,8 @@ public class Camera : MonoBehaviour
     {
         dt = DateTime.Now;
         String now = dt.ToString("yyyy_MM_dd_HH_mm_ss");
-        id = path + "/" + now + ".jpg";
-        if (preId != id)
+        id = Application.persistentDataPath + "/Photo/" + now + ".jpg";
+        if(preId != id)
         {
             //シャッター音
             var mediaActionSound = new AndroidJavaObject("android.media.MediaActionSound");
@@ -63,7 +56,7 @@ public class Camera : MonoBehaviour
 
             // ファイルを保存
 #if UNITY_ANDROID
-            File.WriteAllBytes(path + "/" + now + ".jpg", bin);
+            File.WriteAllBytes(Application.persistentDataPath + "/Photo/" + now + ".jpg", bin);
             // データを書き込む
             csv.SaveData(id);
 #else
@@ -71,8 +64,6 @@ public class Camera : MonoBehaviour
 #endif
 
             preId = id;
-            testId = path + "/" + now + ".jpg";
-            SceneManager.LoadScene("Matching");
         }
     }
 
