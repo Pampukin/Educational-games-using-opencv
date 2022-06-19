@@ -206,9 +206,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1701153870}
-        m_TargetAssemblyTypeName: LookPhoto, Assembly-CSharp
-        m_MethodName: Select
+      - m_Target: {fileID: 1701153876}
+        m_TargetAssemblyTypeName: ShowSelected, Assembly-CSharp
+        m_MethodName: Decide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

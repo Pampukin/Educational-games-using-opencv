@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class LookPhoto : MonoBehaviour
 {
     public RawImage photo;
-    private string CSVPath = "/PhotoData.csv";
     //private string[] PhotoPath;
     public static List<string> PhotoPath = new List<string>();
     private int id = 1;
@@ -106,15 +105,6 @@ public class LookPhoto : MonoBehaviour
     public void Select()
     {
         select = PhotoPath[id];
-
-
-/*
-#if UNITY_ANDROID
-        File.WriteAllBytes(Application.persistentDataPath + "/" + now + ".jpg", bin);
-#else
-        File.WriteAllBytes(Application.dataPath + "/test.jpg", bin);
-#endif
-*/
 
         SceneManager.LoadScene("Select");
     }

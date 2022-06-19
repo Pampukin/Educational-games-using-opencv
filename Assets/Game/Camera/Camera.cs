@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class Camera : MonoBehaviour
 {
-
-
     public RawImage RawImage;
     WebCamTexture webCam;
     DateTime dt;
@@ -18,6 +16,7 @@ public class Camera : MonoBehaviour
     string preId = null;
     public GameObject CSVObject;
     CSVCamera csv;
+    public static string testId;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +71,7 @@ public class Camera : MonoBehaviour
 #endif
 
             preId = id;
-
+            testId = path + "/" + now + ".jpg";
             SceneManager.LoadScene("Matching");
         }
     }
