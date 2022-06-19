@@ -6,18 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Parent/takePhote.unity
+    path: Assets/Game/Parent/takePhote.unity
     guid: 83536eb6b3bdb0e4b9e8d980f4521a43
-  - enabled: 1
-    path: Assets/FindPhotp/FindPhoto.unity
+  - enabled: 0
+    path: Assets/Game/FindPhotp/FindPhoto.unity
     guid: 7782265d1b92c0c41b2b8027b6b5ab94
   - enabled: 0
-    path: Assets/test/testScene.unity
-    guid: 7cede6aee44377849b916a0e8364990d
+    path: Assets/Game/Select/Select.unity
+    guid: 9d57fbfbdd5aa3941a2f449792573519
   - enabled: 0
-    path: Assets/Scenes/childScene.unity
-    guid: 4304a2b0dec0bb749a4dbe966562d987
+    path: Assets/Game/selected/Selected.unity
+    guid: d7c42f7a4490cf34785358c652ab0bd0
+  - enabled: 1
+    path: Assets/Game/Camera/Camera.unity
+    guid: 6e42db65c3ebced44bcc62d7c07fe5a1
   m_configObjects: {}
