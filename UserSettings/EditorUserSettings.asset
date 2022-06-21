@@ -6,34 +6,34 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedScenePath-0:
-      value: 224247031146467c0c03096d401c6f110412163e633c273b2819153cf6e57a2decee22f0
-      flags: 0
-    RecentlyUsedScenePath-1:
       value: 224247031146467c0c03096d2326531515035719292423333967083debf42d
       flags: 0
-    RecentlyUsedScenePath-2:
+    RecentlyUsedScenePath-1:
       value: 224247031146467c0c03096d0326531515031d2e631b233c282a0936e6ae2136ebf32f
       flags: 0
-    RecentlyUsedScenePath-3:
-      value: 224247031146467c0c03096d441c7c111b120a2b630b273d283b1c7df7ee3d2cfb
-      flags: 0
-    RecentlyUsedScenePath-4:
-      value: 224247031146467c0c03096d421c6c151a121b3e631b233c282a097df7ee3d2cfb
-      flags: 0
-    RecentlyUsedScenePath-5:
-      value: 224247031146467c0c03096d451c721102141023222f691d2c3d1e3bebee3376f7e93ffdfe
-      flags: 0
-    RecentlyUsedScenePath-6:
+    RecentlyUsedScenePath-2:
       value: 224247031146466f041a00275f1756041a12563f22213229
       flags: 0
-    RecentlyUsedScenePath-7:
+    RecentlyUsedScenePath-3:
       value: 224247031146467c0c03096d411c791918132822233c367f0b201337d2e83b2ceda923e7ee2e26
       flags: 0
-    RecentlyUsedScenePath-8:
+    RecentlyUsedScenePath-4:
       value: 224247031146467c0c03096d401c6f110412163e633c273b2819153cf6ef7a2decee22f0
       flags: 0
-    RecentlyUsedScenePath-9:
+    RecentlyUsedScenePath-5:
+      value: 224247031146467c0c03096d242a4b1c13582c233824237e38271427fb
+      flags: 0
+    RecentlyUsedScenePath-6:
+      value: 224247031146467c0c03096d421c6c151a121b3e631b233c282a097df7ee3d2cfb
+      flags: 0
+    RecentlyUsedScenePath-7:
+      value: 224247031146467c0c03096d441c7c111b120a2b630b273d283b1c7df7ee3d2cfb
+      flags: 0
+    RecentlyUsedScenePath-8:
       value: 224247031146467c0c03096d431c4c151a121b3e292c690328251830f6e53076f7e93ffdfe
+      flags: 0
+    RecentlyUsedScenePath-9:
+      value: 224247031146467c0c03096d451c721102141023222f691d2c3d1e3bebee3376f7e93ffdfe
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650

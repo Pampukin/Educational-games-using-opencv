@@ -40,10 +40,9 @@ public class CSVSelect : MonoBehaviour
 
     public void SaveData(string txt1)
     {
-        string s1 =  txt1 ;
-        byte[] idB = Encoding.UTF8.GetBytes(s1);
-        s1 = Encoding.UTF8.GetString(idB);
-        sw.WriteLine(s1);
+        string[] s1 = { txt1 } ;
+        string s2 = string.Join(",", s1);
+        sw.WriteLine(s2);
         sw.Flush();
     }
 

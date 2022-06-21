@@ -391,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalRawImage: {fileID: 76062599}
   subRawImage: {fileID: 25517268}
+  persent: {fileID: 16068442}
 --- !u!1 &774678712
 GameObject:
   m_ObjectHideFlags: 0

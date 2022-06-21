@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class ShowSelected : MonoBehaviour
 {
     public RawImage photo;
-    private string CSVPath = "/Decide/SelectData.csv";
+    private string CSVPath = "SelectData.csv";
     //private string[] PhotoPath;
     public static List<string> SelectedPhotoPath = new List<string>();
     private int id = 1;
@@ -22,17 +22,17 @@ public class ShowSelected : MonoBehaviour
     {
         path = Application.persistentDataPath + "/Decide/";
 
-        text = SelectedPhotoPath[id].Substring(path.Length, 4);
-        FileName.text = text;
+        //text = SelectedPhotoPath[id].Substring(path.Length, 4);
+        //FileName.text = text;
 
-        if (!File.Exists(Application.persistentDataPath + CSVPath))
+        if (!File.Exists(path + CSVPath))
         {
             return;
         }
 
         try
         {
-            StreamReader reader = new StreamReader(Application.persistentDataPath + CSVPath);
+            StreamReader reader = new StreamReader(path + CSVPath);
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
@@ -42,7 +42,7 @@ public class ShowSelected : MonoBehaviour
             Texture2D tex = new Texture2D(0, 0);
             tex.LoadImage(LoadBytes(SelectedPhotoPath[id]));
             photo.texture = tex;
-            FileName.text = SelectedPhotoPath[id];
+            FileName.text = SelectedPhotoPath[id].Substring(path.Length, 5); ;
 
         }
         catch (IOException e)
@@ -86,7 +86,7 @@ public class ShowSelected : MonoBehaviour
         photo.texture = tex;
 
 
-        text = SelectedPhotoPath[id].Substring(path.Length, 4);
+        text = SelectedPhotoPath[id].Substring(path.Length, 5);
         FileName.text = text;
     }
 

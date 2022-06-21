@@ -37,10 +37,12 @@ public class Matching : MonoBehaviour
     //いくつマッチングしたか
     int good_match_length = 0;
     //マッチングの閾値
-    int threshold = 400;
+    int threshold = 525;
 
     DescriptorMatcher matcher = DescriptorMatcher.Create("BruteForce");
     DMatch[] matches;
+
+    public Text persent;
 
     // Start is called before the first frame update
     void Start()
@@ -120,6 +122,8 @@ public class Matching : MonoBehaviour
             }
         }
         Cv2.DrawMatches(originalMat, originalKeyPoint, subMat, subKeyPoint, good_matchse, output4);
+        float match = good_match_length / (originalKeyPoint.Length + subKeyPoint.Length);
+        persent.text = match.ToString() ;
         //Cv2.ImShow("output4", output4);
 
         //Debug.Log(good_match_length);

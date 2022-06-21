@@ -963,7 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photo: {fileID: 1617229968}
-  idText: {fileID: 1854205568}
+  FileName: {fileID: 1854205568}
 --- !u!1 &1854205566
 GameObject:
   m_ObjectHideFlags: 0

@@ -54,6 +54,7 @@ public class Select : MonoBehaviour
 
     public void OnClick()
     {
+        string name = input.text;
         if(input.text != "")
         {
             id = Application.persistentDataPath + "/Decide" + "/" + input.text + ".jpg";
@@ -63,7 +64,7 @@ public class Select : MonoBehaviour
 #if UNITY_ANDROID
                 File.WriteAllBytes(Application.persistentDataPath + "/Decide" + "/" + input.text + ".jpg", tex.EncodeToPNG());
 
-                csv.SaveData(id);
+                csv.SaveData(Application.persistentDataPath + "/Decide" + "/" + input.text + ".jpg");
 #else
         File.WriteAllBytes(Application.dataPath + "/test.jpg", bin);
 #endif
