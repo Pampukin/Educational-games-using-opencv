@@ -25,6 +25,7 @@ public class StartCamera : MonoBehaviour
         RawImage.texture = webCam;
         //カメラ表示開始
         webCam.Play();
+
         csv = CSVObject.GetComponent<CSVPhoto>();
 
     }

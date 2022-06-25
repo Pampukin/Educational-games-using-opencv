@@ -16,14 +16,11 @@ public class ShowSelected : MonoBehaviour
     public static string decide;
     public Text FileName;
     string path;
-    private string text;
+
     // Start is called before the first frame update
     void Start()
     {
         path = Application.persistentDataPath + "/Decide/";
-
-        //text = SelectedPhotoPath[id].Substring(path.Length, 4);
-        //FileName.text = text;
 
         if (!File.Exists(path + CSVPath))
         {
@@ -39,13 +36,10 @@ public class ShowSelected : MonoBehaviour
                 SelectedPhotoPath.Add(line);
             }
 
-            Texture2D tex = new Texture2D(0, 0);
-            tex.LoadImage(LoadBytes(SelectedPhotoPath[id]));
-            photo.texture = tex;
-            FileName.text = SelectedPhotoPath[id].Substring(path.Length, 5); ;
+            setTex();
 
         }
-        catch (IOException e)
+        catch
         {
             // ファイルを読み込めない場合エラーメッセージを表示
             FileName.text = "ファイルを読み込めませんでした";
@@ -73,8 +67,13 @@ public class ShowSelected : MonoBehaviour
     public void right()
     {
         id = idCheck(++id);
-        //t2.text = PhotoPath[id];
-        //t1.text = id.ToString();
+        setTex();
+
+    }
+
+    public void left()
+    {
+        id = idCheck(--id);
         setTex();
 
     }
@@ -85,17 +84,7 @@ public class ShowSelected : MonoBehaviour
         tex.LoadImage(LoadBytes(SelectedPhotoPath[id]));
         photo.texture = tex;
 
-
-        text = SelectedPhotoPath[id].Substring(path.Length, 5);
-        FileName.text = text;
-    }
-
-    public void left()
-    {
-        id = idCheck(--id);
-        //t1.text = id.ToString();
-        setTex();
-
+        FileName.text = SelectedPhotoPath[id].Substring(path.Length);
     }
 
     private int idCheck(int id)

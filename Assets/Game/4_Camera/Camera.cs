@@ -25,7 +25,6 @@ public class Camera : MonoBehaviour
 
 #endif
 
-
         path = Application.persistentDataPath + "/Camera";
         // WebCamTextureのインスタンスを生成
         webCam = new WebCamTexture();
@@ -76,56 +75,4 @@ public class Camera : MonoBehaviour
             SceneManager.LoadScene("Matching");
         }
     }
-
-    private Color[] _rotateImg(Color[] coler, int width, int height, int rotate)
-    {
-        Color[] rotatepix = new Color[width * height];
-        int startposi = width * height - width;
-        int posi = 0;
-
-        if (rotate == 0)
-        {
-            for (int i = 0; i < rotatepix.Length; i++)
-            {
-                rotatepix[i] = coler[i];
-            }
-        }
-        else if (rotate == 90)
-        {
-            startposi = width - 1;
-            for (int j = 0; j < width; j++)
-            {
-                for (int i = startposi; i < rotatepix.Length; i += width)
-                {
-                    rotatepix[posi] = coler[i];
-                    posi++;
-                }
-                startposi--;
-            }
-        }
-        else if (rotate == 180)
-        {
-            for (int i = (rotatepix.Length - 1); i >= 0; i--)
-            {
-                rotatepix[rotatepix.Length - 1 - i] = coler[i];
-            }
-        }
-        else if (rotate == 270)
-        {
-            startposi = width * height - width;
-            for (int j = 0; j < width; j++)
-            {
-                for (int i = startposi; i >= 0; i -= width)
-                {
-                    rotatepix[posi] = coler[i];
-                    posi++;
-                }
-                startposi++;
-            }
-        }
-
-        return rotatepix;
-    }
-
-
 }

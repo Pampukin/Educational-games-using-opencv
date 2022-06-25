@@ -47,25 +47,10 @@ public class Matching : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        originalPath = ShowSelected.decide;
-        original = new Texture2D(0, 0);
-        original.LoadImage(LoadBytes(originalPath));
-        originalMat = OpenCvSharp.Unity.TextureToMat(this.original);
-        Akaze.DetectAndCompute(originalMat, null, out originalKeyPoint, originalDescriptor);
-        //親が撮影したデータの特徴点
-        Cv2.DrawKeypoints(originalMat, originalKeyPoint, output1);
 
-        subPath = Camera.testId;
-        sub = new Texture2D(0, 0);
-        sub.LoadImage(LoadBytes(subPath));
-        subMat = OpenCvSharp.Unity.TextureToMat(this.sub);
-        Akaze.DetectAndCompute(subMat, null, out subKeyPoint, subDescriptor);
-        //親が撮影したデータの特徴点
-        Cv2.DrawKeypoints(subMat, subKeyPoint, output2);
-
+        init();
         match();
-        originalRawImage.texture = OpenCvSharp.Unity.MatToTexture(output3);
-        subRawImage.texture = OpenCvSharp.Unity.MatToTexture(output4);
+
     }
 
     /**
@@ -94,14 +79,12 @@ public class Matching : MonoBehaviour
         //特徴点マッチング
         matches = matcher.Match(originalDescriptor, subDescriptor);
         Cv2.DrawMatches(originalMat, originalKeyPoint, subMat, subKeyPoint, matches, output3);
-        //Cv2.ImShow("output3", output3);
+        originalRawImage.texture = OpenCvSharp.Unity.MatToTexture(output3);
     }
 
     //より精度の高い特徴点マッチング
     public void match2()
     {
-
-
         matches = matcher.Match(originalDescriptor, subDescriptor);
         for (int i = 0; i < originalKeyPoint.Length && i < subKeyPoint.Length; ++i)
         {
@@ -122,38 +105,37 @@ public class Matching : MonoBehaviour
             }
         }
         Cv2.DrawMatches(originalMat, originalKeyPoint, subMat, subKeyPoint, good_matchse, output4);
+        subRawImage.texture = OpenCvSharp.Unity.MatToTexture(output4);
+
         float match = good_match_length / (originalKeyPoint.Length + subKeyPoint.Length);
-        persent.text = match.ToString() ;
-        //Cv2.ImShow("output4", output4);
-
-        //Debug.Log(good_match_length);
+        persent.text = match.ToString();
     }
 
-    /*
-    //RawImageをtextureに変換
-    private void raw2Tex(RawImage raw)
+    private void init()
     {
-        var tex = raw.texture;
-        var sw = tex.width;
-        var sh = tex.height;
-        var result = new Texture2D(sw, sh, TextureFormat.RGBA32, false);
-        var currentRT = RenderTexture.active;
-        var rt = new RenderTexture(sw, sh, 32);
-
-        // RawImageのTextureをRenderTextureにコピー
-        Graphics.Blit(tex, rt);
-        RenderTexture.active = rt;
-
-        // RenderTextureのピクセル情報をTexture2Dにコピー
-        result.ReadPixels(new UnityEngine.Rect(0, 0, rt.width, rt.height), 0, 0);
-        result.Apply();
-        RenderTexture.active = currentRT;
-
-        // PNGにエンコード完了
-        //var texture = result.EncodeToPNG();
-
-        this.sub = result;
+        initOriginal();
+        initSub();
     }
-    */
 
+    private void initOriginal()
+    {
+        originalPath = ShowSelected.decide;
+        original = new Texture2D(0, 0);
+        original.LoadImage(LoadBytes(originalPath));
+        originalMat = OpenCvSharp.Unity.TextureToMat(this.original);
+        Akaze.DetectAndCompute(originalMat, null, out originalKeyPoint, originalDescriptor);
+        //親が撮影したデータの特徴点
+        Cv2.DrawKeypoints(originalMat, originalKeyPoint, output1);
+    }
+
+    private void initSub()
+    {
+        subPath = Camera.testId;
+        sub = new Texture2D(0, 0);
+        sub.LoadImage(LoadBytes(subPath));
+        subMat = OpenCvSharp.Unity.TextureToMat(this.sub);
+        Akaze.DetectAndCompute(subMat, null, out subKeyPoint, subDescriptor);
+        //親が撮影したデータの特徴点
+        Cv2.DrawKeypoints(subMat, subKeyPoint, output2);
+    }
 }
