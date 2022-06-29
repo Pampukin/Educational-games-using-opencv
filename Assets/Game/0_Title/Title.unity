@@ -273,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &57805228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -588,8 +588,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.88000005, y: 0.34220636}
   m_AnchorMax: {x: 0.88000005, y: 0.3662857}
-  m_AnchoredPosition: {x: -154, y: 1234}
-  m_SizeDelta: {x: 97.2, y: -28}
+  m_AnchoredPosition: {x: -21.299988, y: 1270.3}
+  m_SizeDelta: {x: 42.6, y: -21.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &680831391
 MonoBehaviour:
@@ -637,7 +637,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 680831394}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: toParentSelected
+        m_MethodName: toLookPhoto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -667,8 +667,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 2ddcfdf3ee01adc4b9502cb1f5c92c95, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1108,7 +1108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: 1110}
+  m_AnchoredPosition: {x: -331, y: 903}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1503106151

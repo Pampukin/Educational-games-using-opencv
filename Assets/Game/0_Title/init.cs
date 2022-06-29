@@ -39,7 +39,7 @@ public class init : MonoBehaviour
         if(!File.Exists(Application.persistentDataPath + "/Decide" + "/SelectData.csv"))
         {
             sw = new StreamWriter(Application.persistentDataPath + "/Decide" + "/SelectData.csv", true);
-            sw.WriteLine("path");
+            sw.WriteLine("path,hint");
             sw.Flush();
         }
 

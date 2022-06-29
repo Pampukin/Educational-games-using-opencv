@@ -19,4 +19,9 @@ public class ButtonController : MonoBehaviour
     {
         SceneManager.LoadScene("Selected");
     }
+
+    public void toLookPhoto()
+    {
+        SceneManager.LoadScene("LookPhoto");
+    }
 }

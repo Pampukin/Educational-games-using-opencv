@@ -18,8 +18,11 @@ EditorBuildSettings:
     path: Assets/Game/3_Select/Select.unity
     guid: 9d57fbfbdd5aa3941a2f449792573519
   - enabled: 1
-    path: Assets/Game/4_selected/ParentSelected.unity
+    path: Assets/Game/4_selected/LookPhoto.unity
     guid: 98a58e8710516bb4c99eee4db5552914
+  - enabled: 1
+    path: Assets/Game/4_selected/ParentSelected.unity
+    guid: 03ecaebebfb9f9c4faee53b45ac995a9
   - enabled: 1
     path: Assets/Game/4_selected/Selected.unity
     guid: d7c42f7a4490cf34785358c652ab0bd0
