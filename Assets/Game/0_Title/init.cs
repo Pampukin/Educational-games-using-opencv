@@ -18,7 +18,15 @@ public class init : MonoBehaviour
         Directory.CreateDirectory(Application.persistentDataPath + "/Decide");
         // csvファイルを作成して、{}の中の要素分csvに追記をする(Androidの処理)
 
-        if(!File.Exists(Application.persistentDataPath + "/Photo" + "/PhotoData.csv"))
+
+#endif
+
+#if UNITY_EDITOR
+        // 新しくcsvファイルを作成して、{}の中の要素分csvに追記をする(Unity上での処理)
+        sw = new StreamWriter("PhotoData.csv", false, Encoding.GetEncoding("shift-jis"));
+#endif
+
+        if (!File.Exists(Application.persistentDataPath + "/Photo" + "/PhotoData.csv"))
         {
             sw = new StreamWriter(Application.persistentDataPath + "/Photo" + "/PhotoData.csv", true);
             sw.WriteLine("path");
@@ -44,12 +52,7 @@ public class init : MonoBehaviour
         }
 
 
-#endif
 
-#if UNITY_EDITOR
-        // 新しくcsvファイルを作成して、{}の中の要素分csvに追記をする(Unity上での処理)
-        sw = new StreamWriter("PhotoData.csv", true, Encoding.GetEncoding("shift-jis"));
-#endif
         
     }
 
