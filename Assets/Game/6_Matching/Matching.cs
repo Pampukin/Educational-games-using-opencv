@@ -5,6 +5,7 @@ using OpenCvSharp;
 using UnityEngine.UI;
 using System.IO;
 using System;
+using DG.Tweening;
 
 public class Matching : MonoBehaviour
 {
@@ -45,6 +46,10 @@ public class Matching : MonoBehaviour
 
     public Text persent;
 
+    private Tween tween;
+    float ave;
+    double matchP;
+    public Text result;
     // Start is called before the first frame update
     void Start()
     {
@@ -108,11 +113,12 @@ public class Matching : MonoBehaviour
         Cv2.DrawMatches(originalMat, originalKeyPoint, subMat, subKeyPoint, good_matchse, output4);
         subRawImage.texture = OpenCvSharp.Unity.MatToTexture(output4);
 
-        float ave = (originalKeyPoint.Length + subKeyPoint.Length)/2f;
-        double match = 100*good_match_length /ave ;
-        match = Math.Round(match, 1);
-        //float match = good_match_length;
-        persent.text = match.ToString() + " %";// + good_match_length.ToString() + originalKeyPoint.Length.ToString() + subKeyPoint.Length.ToString();
+        ave = (originalKeyPoint.Length + subKeyPoint.Length)/2f;
+        matchP = 100*good_match_length /ave ;
+        matchP = Math.Round(matchP, 1);
+
+        setMatchP(matchP);
+        persentCheck();
     }
 
     private void init()
@@ -141,5 +147,33 @@ public class Matching : MonoBehaviour
         Akaze.DetectAndCompute(subMat, null, out subKeyPoint, subDescriptor);
         //e‚ªŽB‰e‚µ‚½ƒf[ƒ^‚Ì“Á’¥“_
         Cv2.DrawKeypoints(subMat, subKeyPoint, output2);
+    }
+
+    private double currentDispCoin = 0;
+
+    private void setMatchP(double num)
+    {
+
+        DOTween.Kill(tween);
+        tween = DOTween.To(() => 0, (val) =>
+        {
+            currentDispCoin = val;
+            persent.text = string.Format("{0:#,0}", val) + " %";
+        }, num, 1f);
+    }
+
+    private void persentCheck()
+    {
+        if(matchP >=70)
+        {
+            result.text = ("Š®‘Sˆê’v");
+        }else if(30 < matchP &&matchP < 70)
+        {
+            result.text = ("ˆê’v??");
+        }
+        else if (30 >matchP)
+        {
+            result.text = ("????????");
+        }
     }
 }

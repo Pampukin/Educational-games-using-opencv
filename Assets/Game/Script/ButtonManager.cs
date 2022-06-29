@@ -26,4 +26,9 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("Selected");
     }
+
+    public void exitGame()
+    {
+        Application.Quit();
+    }
 }
