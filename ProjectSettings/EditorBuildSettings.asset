@@ -5,37 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/test/testScene.unity
-    guid: 7cede6aee44377849b916a0e8364990d
-  - enabled: 0
-    path: Assets/Scenes/childScene.unity
-    guid: 4304a2b0dec0bb749a4dbe966562d987
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Lobby/LobbyScene.unity
-    guid: dbcacb8eff72f5b43af892254d87eda7
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Identifiy_Contours_by_Shape/ContoursByShapeScene.unity
-    guid: 5b0d16f801c31c944bfae4eb77cc390d
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Tracking/TrackingScene.unity
-    guid: 111a9059ba67efb47a099e5ffbe159c2
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/OCR.Alphabet/AlphabetOCR.unity
-    guid: d0f70e1287fbd6047ac361ee8077b3d6
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Face_Detector/FaceDetectorScene.unity
-    guid: dc53129b9536b4047802944847361339
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Face_Recognizer/FaceRecognizer.unity
-    guid: 64d6d3bcebc92f14495f16f82bc3841e
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/Marker_Detector/MarkerDetectorScene.unity
-    guid: 1d83579c4bfab024a80d40e6207c2158
-  - enabled: 0
-    path: Assets/OpenCV+Unity/Demo/LiveSketch_WebCam/LiveSketchScene.unity
-    guid: a5a11ab1373713a42b4b17072ee63929
+    path: Assets/Game/Title/Title.unity
+    guid: 32161927886d5f0439cd8576e514222e
+  - enabled: 1
+    path: Assets/Game/0_Parent/takePhoto.unity
+    guid: 83536eb6b3bdb0e4b9e8d980f4521a43
+  - enabled: 1
+    path: Assets/Game/1_FindPhotp/FindPhoto.unity
+    guid: 7782265d1b92c0c41b2b8027b6b5ab94
+  - enabled: 1
+    path: Assets/Game/2_Select/Select.unity
+    guid: 9d57fbfbdd5aa3941a2f449792573519
+  - enabled: 1
+    path: Assets/Game/3_selected/ParentSelected.unity
+    guid: 98a58e8710516bb4c99eee4db5552914
+  - enabled: 1
+    path: Assets/Game/3_selected/Selected.unity
+    guid: d7c42f7a4490cf34785358c652ab0bd0
+  - enabled: 1
+    path: Assets/Game/4_Camera/Camera.unity
+    guid: 6e42db65c3ebced44bcc62d7c07fe5a1
+  - enabled: 1
+    path: Assets/Game/5_Matching/Matching.unity
+    guid: 637ca94b64aab1f43b26cfeeb5d3b2b5
   m_configObjects: {}
