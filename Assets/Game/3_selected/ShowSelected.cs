@@ -83,17 +83,12 @@ public class ShowSelected : MonoBehaviour
     private void setTex()
     {
         Texture2D tex = new Texture2D(0, 0);
-        hintText.text = "000000000000000";
-        hintText.text = SelectedPhotoPath[id].Substring(path.Length);
-        hintText.text = split(SelectedPhotoPath[id].Substring(path.Length))[0];
-        tex.LoadImage(LoadBytes(split(SelectedPhotoPath[id].Substring(path.Length))[0]));
+        tex.LoadImage(LoadBytes(split(SelectedPhotoPath[id])[0]));
         photo.texture = tex;
 
-        hintText.text = "aaaaaaaaaaaa";
-        FileName.text = split(SelectedPhotoPath[id].Substring(path.Length))[0];
-        hintText.text = "bbbbbbbbbbbb";
+        FileName.text = split(SelectedPhotoPath[id].Substring(path.Length))[0].Split('.')[0];
         hintText.text = split(SelectedPhotoPath[id].Substring(path.Length))[1];
-        hintText.text = "ccccccccc";
+
 
     }
 
@@ -115,7 +110,7 @@ public class ShowSelected : MonoBehaviour
 
     public void Decide()
     {
-        decide = split(SelectedPhotoPath[id].Substring(path.Length))[0];
+        decide = split(SelectedPhotoPath[id])[0];
         SceneManager.LoadScene("Camera");
     }
 
@@ -126,6 +121,6 @@ public class ShowSelected : MonoBehaviour
 
     private string[] split(string data)
     {
-        return data.Split('.');
+        return data.Split(',');
     }
 }
