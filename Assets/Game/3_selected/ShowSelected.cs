@@ -109,4 +109,9 @@ public class ShowSelected : MonoBehaviour
         SceneManager.LoadScene("Camera");
     }
 
+    public void toFindPhoto()
+    {
+        SceneManager.LoadScene("FindPhoto");
+    }
+
 }

@@ -67,8 +67,6 @@ public class LookPhoto : MonoBehaviour
     public void right()
     {
         id = idCheck(++id);
-        //t2.text = PhotoPath[id];
-        t1.text = id.ToString();
         Texture2D tex = new Texture2D(0, 0);
         tex.LoadImage(LoadBytes(PhotoPath[id]));
         photo.texture = tex;
@@ -78,7 +76,6 @@ public class LookPhoto : MonoBehaviour
     public void left()
     {
         id = idCheck(--id);
-        t1.text = id.ToString();
         Texture2D tex = new Texture2D(0, 0);
         tex.LoadImage(LoadBytes(PhotoPath[id]));
         photo.texture = tex;

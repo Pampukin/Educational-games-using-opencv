@@ -4,6 +4,7 @@ using UnityEngine;
 using OpenCvSharp;
 using UnityEngine.UI;
 using System.IO;
+using System;
 
 public class Matching : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class Matching : MonoBehaviour
     //いくつマッチングしたか
     int good_match_length = 0;
     //マッチングの閾値
-    int threshold = 525;
+    int threshold = 600;
 
     DescriptorMatcher matcher = DescriptorMatcher.Create("BruteForce");
     DMatch[] matches;
@@ -107,8 +108,11 @@ public class Matching : MonoBehaviour
         Cv2.DrawMatches(originalMat, originalKeyPoint, subMat, subKeyPoint, good_matchse, output4);
         subRawImage.texture = OpenCvSharp.Unity.MatToTexture(output4);
 
-        float match = good_match_length / (originalKeyPoint.Length + subKeyPoint.Length);
-        persent.text = match.ToString();
+        float ave = (originalKeyPoint.Length + subKeyPoint.Length)/2f;
+        double match = 100*good_match_length /ave ;
+        match = Math.Round(match, 1);
+        //float match = good_match_length;
+        persent.text = match.ToString() + " %";// + good_match_length.ToString() + originalKeyPoint.Length.ToString() + subKeyPoint.Length.ToString();
     }
 
     private void init()
