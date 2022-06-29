@@ -9,6 +9,7 @@ public class Select : MonoBehaviour
 {
     public RawImage photo;
     public Text input;
+    public Text hint;
     private Texture2D tex;
     public GameObject CSVObject;
     private CSVSelect csv;
@@ -64,7 +65,7 @@ public class Select : MonoBehaviour
 #if UNITY_ANDROID
                 File.WriteAllBytes(Application.persistentDataPath + "/Decide" + "/" + input.text + ".jpg", tex.EncodeToPNG());
 
-                csv.SaveData(Application.persistentDataPath + "/Decide" + "/" + input.text + ".jpg");
+                csv.SaveData(Application.persistentDataPath + "/Decide" + "/" + input.text + ".jpg", hint.text);
 #else
         File.WriteAllBytes(Application.dataPath + "/test.jpg", bin);
 #endif

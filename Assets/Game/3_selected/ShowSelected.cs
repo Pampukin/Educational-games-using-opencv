@@ -10,8 +10,9 @@ public class ShowSelected : MonoBehaviour
 {
     public RawImage photo;
     private string CSVPath = "SelectData.csv";
-    //private string[] PhotoPath;
     public static List<string> SelectedPhotoPath = new List<string>();
+    //public static List<string> hint = new List<string>();
+    public Text hintText;
     private int id = 1;
     public static string decide;
     public Text FileName;
@@ -34,8 +35,9 @@ public class ShowSelected : MonoBehaviour
             {
                 string line = reader.ReadLine();
                 SelectedPhotoPath.Add(line);
+                //hint.Add("");
             }
-
+            
             setTex();
 
         }
@@ -81,10 +83,18 @@ public class ShowSelected : MonoBehaviour
     private void setTex()
     {
         Texture2D tex = new Texture2D(0, 0);
-        tex.LoadImage(LoadBytes(SelectedPhotoPath[id]));
+        hintText.text = "000000000000000";
+        hintText.text = SelectedPhotoPath[id].Substring(path.Length);
+        hintText.text = split(SelectedPhotoPath[id].Substring(path.Length))[0];
+        tex.LoadImage(LoadBytes(split(SelectedPhotoPath[id].Substring(path.Length))[0]));
         photo.texture = tex;
 
-        FileName.text = SelectedPhotoPath[id].Substring(path.Length);
+        hintText.text = "aaaaaaaaaaaa";
+        FileName.text = split(SelectedPhotoPath[id].Substring(path.Length))[0];
+        hintText.text = "bbbbbbbbbbbb";
+        hintText.text = split(SelectedPhotoPath[id].Substring(path.Length))[1];
+        hintText.text = "ccccccccc";
+
     }
 
     private int idCheck(int id)
@@ -105,7 +115,7 @@ public class ShowSelected : MonoBehaviour
 
     public void Decide()
     {
-        decide = SelectedPhotoPath[id];
+        decide = split(SelectedPhotoPath[id].Substring(path.Length))[0];
         SceneManager.LoadScene("Camera");
     }
 
@@ -114,4 +124,8 @@ public class ShowSelected : MonoBehaviour
         SceneManager.LoadScene("FindPhoto");
     }
 
+    private string[] split(string data)
+    {
+        return data.Split('.');
+    }
 }

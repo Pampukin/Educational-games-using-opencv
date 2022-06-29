@@ -38,9 +38,9 @@ public class CSVSelect : MonoBehaviour
 
     }
 
-    public void SaveData(string txt1)
+    public void SaveData(string txt1,string txt2)
     {
-        string[] s1 = { txt1 } ;
+        string[] s1 = { txt1,txt2 } ;
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);
         sw.Flush();
