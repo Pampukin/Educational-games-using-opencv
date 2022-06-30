@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class init : MonoBehaviour
 {
     private StreamWriter sw;
+    public static int amount=0;
+    public Text am;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        amount = PlayerPrefs.GetInt("amount", 0);
+        am.text = "‚Ý‚Â‚¯‚½‚±‚·‚¤\n" + amount.ToString() + "‚±";
 #if UNITY_ANDROID
         Directory.CreateDirectory(Application.persistentDataPath + "/Photo");
         Directory.CreateDirectory(Application.persistentDataPath + "/Camera");

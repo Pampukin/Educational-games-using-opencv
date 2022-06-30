@@ -54,7 +54,7 @@ public class Matching : MonoBehaviour
     void Start()
     {
 
-        init();
+        initOS();
         match();
 
     }
@@ -115,13 +115,13 @@ public class Matching : MonoBehaviour
 
         ave = (originalKeyPoint.Length + subKeyPoint.Length)/2f;
         matchP = 100*good_match_length /ave ;
-        matchP = Math.Round(matchP, 1);
+        matchP = Math.Round(matchP, 2);
 
         setMatchP(matchP);
         persentCheck();
     }
 
-    private void init()
+    private void initOS()
     {
         initOriginal();
         initSub();
@@ -159,21 +159,24 @@ public class Matching : MonoBehaviour
         {
             currentDispCoin = val;
             persent.text = string.Format("{0:#,0}", val) + " %";
-        }, num, 1f);
+        }, num, 1.5f);
     }
 
     private void persentCheck()
     {
-        if(matchP >=70)
+        if(matchP >=55)
         {
-            result.text = ("Š®‘Sˆê’v");
-        }else if(30 < matchP &&matchP < 70)
+            init.amount++;
+            PlayerPrefs.SetInt("amount", init.amount);
+            PlayerPrefs.Save();
+            result.text = ("‚·‚²‚¢");
+        }else if(30 < matchP &&matchP < 55)
         {
-            result.text = ("ˆê’v??");
+            result.text = ("‚¨‚µ‚¢");
         }
         else if (30 >matchP)
         {
-            result.text = ("????????");
+            result.text = ("‚´‚ñ‚Ë‚ñ");
         }
     }
 }

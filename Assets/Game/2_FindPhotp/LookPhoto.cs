@@ -39,7 +39,7 @@ public class LookPhoto : MonoBehaviour
 
 
         }
-        catch (IOException e)
+        catch
         {
             // ファイルを読み込めない場合エラーメッセージを表示
             t1.text = "ファイルを読み込めませんでした";
